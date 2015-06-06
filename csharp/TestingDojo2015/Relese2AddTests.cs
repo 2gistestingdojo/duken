@@ -2,6 +2,7 @@
 {
     #region using
 
+    using System;
     using System.Linq;
 
     using NUnit.Framework;
@@ -58,9 +59,10 @@
             var productsList = mainWindow.FindElement(By.Id("ProductsMW"));
             var productItems = productsList.FindElements(By.ClassName("ListViewItem"));
 
-            var row = productItems.Last().FindElements(By.ClassName("TextBlock"));
+            var maxNumber = productItems.Select(x => x.FindElements(By.ClassName("TextBlock")))
+                .Select(x => Convert.ToInt32(x.First().GetAttribute("Name"))).Max();
             
-            Assert.That(row.First().GetAttribute("Name"), Is.EqualTo("9"));
+            Assert.That(maxNumber, Is.EqualTo(9));
         }
 
 

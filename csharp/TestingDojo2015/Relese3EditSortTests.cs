@@ -33,7 +33,7 @@
             editWindow.FindElement(By.Id("NameCW")).SendKeys("1");
             editWindow.FindElement(By.Id("SaveCW")).Click();
 
-            var result = firstItem.FindElements(By.ClassName("TextBlock")).Last().GetAttribute("Name");
+            var result = firstItem.FindElements(By.ClassName("TextBlock"))[1].GetAttribute("Name");
 
             Assert.That(result, Is.EqualTo("1"));
         }
@@ -77,16 +77,16 @@
 
             sortItems.Sort(delegate(IWebElement item1, IWebElement item2)
                     {
-                        var name1 = item1.FindElements(By.ClassName("TextBlock")).Last().GetAttribute("Name");
-                        var name2 = item2.FindElements(By.ClassName("TextBlock")).Last().GetAttribute("Name");
+                        var name1 = item1.FindElements(By.ClassName("TextBlock"))[1].GetAttribute("Name");
+                        var name2 = item2.FindElements(By.ClassName("TextBlock"))[1].GetAttribute("Name");
 
                         return String.Compare(name1, name2, StringComparison.Ordinal);
                     });
 
             for (int i = 0; i < items.Count; i++)
             {
-                var name1 = items[i].FindElements(By.ClassName("TextBlock")).Last().GetAttribute("Name");
-                var name2 = sortItems[i].FindElements(By.ClassName("TextBlock")).Last().GetAttribute("Name");
+                var name1 = items[i].FindElements(By.ClassName("TextBlock"))[1].GetAttribute("Name");
+                var name2 = sortItems[i].FindElements(By.ClassName("TextBlock"))[1].GetAttribute("Name");
 
                 if (name1 != name2)
                 {
