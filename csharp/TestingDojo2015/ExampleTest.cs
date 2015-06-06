@@ -30,21 +30,6 @@
             Assert.That(productItems.Count, Is.EqualTo(1));
         }
 
-        [Test]
-        public void SearchByIdSubmit()
-        {
-            var mainWindow = this.Driver.FindElementById("MainWindow");
-
-            var searchString = mainWindow.FindElement(By.Id("QueryMW"));
-            searchString.SendKeys("3");
-            searchString.Submit();
-
-            var productsList = mainWindow.FindElement(By.Id("ProductsMW"));
-            var productItems = productsList.FindElements(By.ClassName("ListViewItem"));
-
-            Assert.That(productItems.Count, Is.EqualTo(1));
-        }
-
         #endregion
     }
 }
