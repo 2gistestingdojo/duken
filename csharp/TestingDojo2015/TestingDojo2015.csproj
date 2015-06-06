@@ -52,6 +52,7 @@
     <Compile Include="Relese3EditSortTests.cs" />
     <Compile Include="Relese4DeleteAndSort.cs" />
     <Compile Include="Relese5DeleteAndSortExtension.cs" />
+    <Compile Include="Relese6CategoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
