@@ -87,7 +87,23 @@
             Assert.That(productItems.Count, Is.EqualTo(8));
         }
 
+        [Test]
+        public void AddEmtyItem()
+        {
+            var mainWindow = this.Driver.FindElementById("MainWindow");
 
+            var addButton = mainWindow.FindElement(By.Id("AddNewProductMW"));
+            addButton.Click();
+
+
+            var addNewItemWindow = this.Driver.FindElementById("AddNewProductWindow");
+
+            addNewItemWindow.FindElement(By.Id("AddAW")).Click();
+
+            var errorWin = addNewItemWindow.FindElement(By.Name("Error"));
+
+            Assert.NotNull(errorWin);
+        }
 
         #endregion
     }
