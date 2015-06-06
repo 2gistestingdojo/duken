@@ -39,6 +39,29 @@
         }
 
         [Test]
+        public void IndexnNotChange()
+        {
+            var mainWindow = this.Driver.FindElementById("MainWindow");
+
+            var productsList = mainWindow.FindElement(By.Id("ProductsMW"));
+            var firstItem = productsList.FindElements(By.ClassName("ListViewItem")).First();
+
+            var expected = firstItem.FindElements(By.ClassName("TextBlock")).First().GetAttribute("Name");
+
+            var act = new Actions(this.Driver);
+            act.DoubleClick(firstItem);
+            act.Perform();
+
+            var editWindow = this.Driver.FindElementById("ChangeProductWindow");
+            editWindow.FindElement(By.Id("NameCW")).SendKeys("1");
+            editWindow.FindElement(By.Id("SaveCW")).Click();
+
+            var actual = firstItem.FindElements(By.ClassName("TextBlock")).First().GetAttribute("Name");
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
         public void SortItem()
         {
             var mainWindow = this.Driver.FindElementById("MainWindow");

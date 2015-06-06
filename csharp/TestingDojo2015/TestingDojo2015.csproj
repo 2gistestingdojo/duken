@@ -50,6 +50,7 @@
     <Compile Include="Relese1SearchTests.cs" />
     <Compile Include="Relese2AddTests.cs" />
     <Compile Include="Relese3EditSortTests.cs" />
+    <Compile Include="Relese4DeleteAndSort.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
